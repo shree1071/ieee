@@ -1,0 +1,429 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: #050510;
+    color: #e2e8f0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(139, 92, 246, 0.25);
+    border-radius: 10px;
+  }
+
+  video::-webkit-media-controls {
+    display: none !important;
+  }
+}
+
+/* ===== GLASS ===== */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(30px) saturate(1.4);
+  -webkit-backdrop-filter: blur(30px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(40px) saturate(1.6);
+  -webkit-backdrop-filter: blur(40px) saturate(1.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+    0 30px 80px -20px rgba(0, 0, 0, 0.6),
+    0 0 60px -20px rgba(139, 92, 246, 0.08);
+}
+
+/* ===== GRADIENT TEXT ===== */
+.grad-text {
+  background: linear-gradient(135deg, #c084fc 0%, #818cf8 30%, #22d3ee 60%, #a78bfa 100%);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimText 5s linear infinite;
+}
+
+@keyframes shimText {
+  0% {
+    background-position: 0% center;
+  }
+
+  100% {
+    background-position: 300% center;
+  }
+}
+
+/* ===== BUTTONS ===== */
+.btn-cta {
+  position: relative;
+  background: linear-gradient(135deg, #7c3aed 0%, #6366f1 50%, #0ea5e9 100%);
+  background-size: 200% 200%;
+  animation: btnGrad 4s ease infinite;
+  border-radius: 18px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  box-shadow:
+    0 6px 30px rgba(99, 102, 241, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn-cta:hover {
+  box-shadow:
+    0 10px 50px rgba(99, 102, 241, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  transform: translateY(-2px);
+}
+
+.btn-cta:active {
+  transform: translateY(0);
+}
+
+@keyframes btnGrad {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.btn-outline {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  font-weight: 700;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(139, 92, 246, 0.35);
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.1);
+  transform: translateY(-1px);
+}
+
+/* ===== INPUT ===== */
+.field {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1.5px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  color: #fff;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.field::placeholder {
+  color: rgba(255, 255, 255, 0.18);
+}
+
+.field:focus {
+  outline: none;
+  border-color: rgba(139, 92, 246, 0.5);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.08), 0 0 30px rgba(139, 92, 246, 0.06);
+}
+
+/* ===== MESH BG ===== */
+.mesh-bg {
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 55%, rgba(124, 58, 237, 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 85% 20%, rgba(6, 182, 212, 0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 50% 95%, rgba(168, 85, 247, 0.06) 0%, transparent 50%),
+    #050510;
+}
+
+/* ===== FLOATING ORBS ===== */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  animation: orbDrift 16s ease-in-out infinite;
+}
+
+.orb-a {
+  width: 500px;
+  height: 500px;
+  background: rgba(124, 58, 237, 0.12);
+  top: -15%;
+  left: -10%;
+  animation-delay: 0s;
+}
+
+.orb-b {
+  width: 400px;
+  height: 400px;
+  background: rgba(6, 182, 212, 0.09);
+  bottom: -10%;
+  right: -8%;
+  animation-delay: -5s;
+}
+
+.orb-c {
+  width: 300px;
+  height: 300px;
+  background: rgba(236, 72, 153, 0.06);
+  top: 50%;
+  left: 60%;
+  animation-delay: -10s;
+}
+
+@keyframes orbDrift {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -25px) scale(1.08);
+  }
+
+  66% {
+    transform: translate(-20px, 15px) scale(0.94);
+  }
+}
+
+/* ===== PULSE ===== */
+.live-dot {
+  animation: livePulse 2s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6);
+  }
+
+  50% {
+    box-shadow: 0 0 0 5px rgba(239, 68, 68, 0);
+  }
+}
+
+/* ===== STAT NUMBER ===== */
+.num {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+}
+
+/* ===== SHIMMER BAR ===== */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* ===== SCAN LINES (cinematic) ===== */
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px);
+}
+
+/* ===== RANK UPDATE ADRENALINE ===== */
+.rank-up {
+  animation: rankPop 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes rankPop {
+  0% {
+    transform: scale(1);
+    color: #e2e8f0;
+    text-shadow: 0 0 0 transparent;
+  }
+
+  15% {
+    transform: scale(2.2) translateY(5px);
+    color: #fff;
+    text-shadow: 0 0 40px #a855f7, 0 0 80px #a855f7;
+  }
+
+  80% {
+    transform: scale(1.1);
+    color: #e2e8f0;
+    text-shadow: 0 0 10px #a855f7;
+  }
+
+  100% {
+    transform: scale(1);
+    color: #e2e8f0;
+    text-shadow: 0 0 0 transparent;
+  }
+}
+
+.screen-flash {
+  animation: flashScreen 0.4s ease-out forwards;
+}
+
+@keyframes flashScreen {
+  0% {
+    box-shadow: inset 0 0 0 0 rgba(168, 85, 247, 0);
+  }
+
+  10% {
+    box-shadow: inset 0 0 0 8px rgba(168, 85, 247, 0.8), inset 0 0 50px rgba(168, 85, 247, 0.4);
+  }
+
+  100% {
+    box-shadow: inset 0 0 0 0 rgba(168, 85, 247, 0);
+  }
+}
+
+/* ===== GLITCH TEXT EFFECT ===== */
+.glitch-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -1px 0 #0ea5e9;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: -1px 0 #a855f7;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+  0% {
+    clip: rect(21px, 9999px, 86px, 0);
+    transform: translate(0);
+  }
+
+  5% {
+    clip: rect(62px, 9999px, 14px, 0);
+    transform: translate(-2px, 2px);
+  }
+
+  10% {
+    clip: rect(98px, 9999px, 8px, 0);
+    transform: translate(2px, -2px);
+  }
+
+  15% {
+    clip: rect(3px, 9999px, 78px, 0);
+    transform: translate(0);
+  }
+
+  20% {
+    clip: rect(30px, 9999px, 11px, 0);
+    transform: translate(-2px, 2px);
+  }
+
+  25% {
+    clip: rect(74px, 9999px, 20px, 0);
+    transform: translate(2px, -2px);
+  }
+
+  30% {
+    clip: rect(45px, 9999px, 63px, 0);
+    transform: translate(0);
+  }
+
+  100% {
+    clip: rect(45px, 9999px, 63px, 0);
+    transform: translate(0);
+  }
+}
+
+@keyframes glitch-anim2 {
+  0% {
+    clip: rect(82px, 9999px, 12px, 0);
+    transform: translate(0);
+  }
+
+  5% {
+    clip: rect(13px, 9999px, 54px, 0);
+    transform: translate(2px, -2px);
+  }
+
+  10% {
+    clip: rect(68px, 9999px, 89px, 0);
+    transform: translate(-2px, 2px);
+  }
+
+  15% {
+    clip: rect(24px, 9999px, 4px, 0);
+    transform: translate(0);
+  }
+
+  20% {
+    clip: rect(90px, 9999px, 33px, 0);
+    transform: translate(2px, -2px);
+  }
+
+  25% {
+    clip: rect(41px, 9999px, 78px, 0);
+    transform: translate(-2px, 2px);
+  }
+
+  30% {
+    clip: rect(71px, 9999px, 19px, 0);
+    transform: translate(0);
+  }
+
+  100% {
+    clip: rect(71px, 9999px, 19px, 0);
+    transform: translate(0);
+  }
+}
